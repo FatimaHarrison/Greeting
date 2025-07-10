@@ -1,0 +1,110 @@
+<!--Fatima Harrison, COP3330C, Jul 9, 2025-->
+<!--This project objective is to create a functional summit form using a local domain from the Spring -->
+<!--The project will be run through an HTML and Java sources to sore in the users input-->
+<!--Each input consist prompting the user's ID#, current date, and additional message-->
+<!--The results will output the user's input data that was submitted in the form-->
+<!DOCTYPE HTML>
+<!--Main Web source-->
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<!--Front-end page-->
+<body>
+<!--Start of styles-->
+<!--Elements within the style sheet below-->
+<style>
+    body{
+        margin: 40px;
+background-color: #1b1717;
+color: #333;
+}
+
+h1 {
+    font-size: 33px;
+    color: olive;
+    font-family: Georgia;
+}
+
+h2 {
+    font-style: italic;
+    font-weight: bold;
+    color: #d1b9b7;
+}
+
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+input[type="submit"],
+input[type="reset"] {
+    padding: 10px 20px;
+    font-size: 14px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"] {
+    background-color: #0a300d;
+    color: oldlace;
+    font-size: 25px;
+    font-style: oblique;
+    font-family: Georgia;
+}
+
+input[type="reset"] {
+    background-color: #ccb210;
+    color: oldlace;
+    font-size: 25px;
+    font-style: oblique;
+    font-family: Georgia;
+}
+
+input[type="submit"]:hover {
+    background-color: #ccb210;
+}
+
+input[type="reset"]:hover {
+    background-color: #0a300d;
+}</style>
+<!--End of styles-->
+<!--Default Web Project Header-->
+<h1 style ="font-size: 33px"> Fatima Harrison - COP 3330C Project 8: Greeting</h1>
+<h2><strong><em>Please enter your student ID, date, and a message below.</em></strong></h2>
+<form action="#" th:action="@{/greeting}" th:object="${greeting}" method="post">
+    <!--Prompting user to input the ID#-->
+    <p><label for="id">Id:</label><input type="text" id="id" th:field="*{id}" /></p>
+    <!--Insert Month-->
+    <p><label for="month">Month:</label><input type="text" id="month" th:field="*{month}" /></p>
+    <!--Insert Date-->
+    <p><label for="day">Day:</label>
+        <input type="text" id="day" th:if="${#fields.hasErrors('day')}"  th:field="*{day}" /></p>
+    <!--Insert Year-->
+    <p>
+        <label for="year">Year:</label><input type="text" id="year" th:field="*{month}" /></p>
+    <!--Prompting for user to insert message (not required)-->
+    <p><label for="content">Message:</label><input type="text" id="content" th:field="*{content}" /></p>
+    <!--Modified text value for submit and reset action.-->
+    <p><input type="Submit" value="Clear Data"/> <input type="Reset" value="Clear" /></p>
+</form>
+</body>
+</html>
